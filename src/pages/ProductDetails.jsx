@@ -26,7 +26,6 @@ const ProductDetails = () => {
     fetchData();
   }, [productId]);
   useEffect(() => {
-    // console.log(productDetails);
   }, [productDetails]);
 
   if (error) return <p>{error}</p>;
@@ -39,7 +38,6 @@ const ProductDetails = () => {
           {/* Image */}
           <div className="w-1/3">
             <img
-              // src={productDetails.thumbnail}
               src={productDetails.images[2]}
               alt={productDetails.title}
               className="w-full lg:w-[20vw] h-full object-cover rounded-t-xl"

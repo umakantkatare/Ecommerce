@@ -1,15 +1,3 @@
-import React, { useState } from "react";
-import {
-  Search,
-  ShoppingCart,
-  User,
-  Menu,
-  Heart,
-  Star,
-  TrendingUp,
-  Package,
-  Shield,
-} from "lucide-react";
 import Carousel from "../components/Carousel";
 import CategoryResult from "../components/CategoryResult";
 import Features from "../components/Features";
@@ -25,22 +13,22 @@ const Home = () => {
         <CategoryResult />
       </div>
       <div>
-      <Carousel />
+        <Carousel />
       </div>
       <div>
-        <Features/>
+        <Features />
       </div>
       <div>
-<NewArrival/>
+        <NewArrival />
       </div>
       <div>
-        <TopProducts/>
+        <TopProducts />
       </div>
       <div>
-        <NewsLetter/>
+        <NewsLetter />
       </div>
       <div>
-        <SearchSuggestions/>
+        <SearchSuggestions />
       </div>
     </div>
   );
