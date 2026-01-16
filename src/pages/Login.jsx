@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Phone, Lock, Chrome } from "lucide-react";
 import useAuth from "../hooks/useAuth";
 
@@ -28,7 +28,6 @@ const Login = () => {
   }, [isSubmitSuccessful, reset]);
 
   const onSubmit = (data) => {
-    // console.log(data);
     logIn(data);
     navigate("/");
   };
@@ -42,7 +41,6 @@ const Login = () => {
   return (
     <div
       className="min-h-screen bg-gray-800 flex items-center justify-center px-4 text-black "
-      // className="w-[80vw] h-[60vh] bg-gray-800 flex justify-center items-center mx-auto my-7 text-black"
     >
       {/* card */}
       <form
@@ -57,7 +55,6 @@ const Login = () => {
         p-6 sm:p-8
         flex flex-col gap-5
       "
-        //  className="w-[35%] h-[90%] bg-white rounded-lg flex flex-col gap-5 mx-auto p-6 "
       >
         {/* Header */}
         <div className="flex flex-col items-center my-2">
