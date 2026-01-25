@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { FaBars, FaTimes, FaSearch } from "react-icons/fa";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
-import { CircleUser,ShoppingCart } from "lucide-react";
-import SearchProduct from "./Search";
-import { Search as SearchIcon} from "lucide-react";
+import { CircleUser, ShoppingCart } from "lucide-react";
+import SearchBar from "./Search";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -20,33 +19,25 @@ const Navbar = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="w-full bg-[#1f1f1f] text-white px-6 py-3 flex items-center justify-between shadow-md relative">
+      <nav className="w-full bg-[#1f1f1f] text-white px-6 py-3 gap-5 flex flex-col sm:flex-row sm:items-center sm:justify-between shadow-md relative z-999">
         {/* Left */}
-        <div className="flex items-center gap-4">
-          {/* {logo} */}
-                <ShoppingCart className="w-8 h-8 text-blue-600" />
-          <h1 className="text-xl font-semibold tracking-wide">Ecommerce</h1>
+        <div className=" w-full flex items-center justify-between ">
+          <Link to='/' className="flex items-center gap-4">
+            {/* {logo} */}
+            <ShoppingCart className="w-8 h-8 text-blue-600" />
+            <h1 className="text-xl font-semibold tracking-wide">Ecommerce</h1>
+          </Link>
+
+          <div>
+            <button className="md:hidden" onClick={() => setOpen(!open)}>
+              {open ? <FaTimes size={22} /> : <FaBars size={22} />}
+            </button>
+          </div>
         </div>
 
-        {/* Hamburger (mobile only) */}
-        <div>
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
-            {open ? <FaTimes size={22} /> : <FaBars size={22} />}
-          </button>
+        <div className="sm:absolute sm:left-1/2 sm:-translate-x-1/2 ">
+          <SearchBar />
         </div>
-
-        {/* Desktop Search */}
-        {/* <div className="relative hidden md:flex items-center">
-          <FaSearch className="absolute left-3 text-gray-300" />
-          <input
-            type="text"
-            value={searchBar}
-            onChange={(e) => setSearchBar(e.target.value)}
-            placeholder="Search products..."
-            className="bg-[#3a3a3a] text-sm px-10 py-2 rounded-md outline-none placeholder-gray-400 w-[35vw]"
-          />
-        </div> */}
-        <SearchProduct />
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -60,10 +51,9 @@ const Navbar = () => {
             Cart
           </NavLink>
 
-          {/* {Object.keys(user)?.length != 0 ? ( */}
           {user ? (
             <CircleUser
-            className="cursor-pointer"
+              className="cursor-pointer"
               onClick={() => setShowProfile((prev) => !prev)}
               size={25}
             />
@@ -85,33 +75,8 @@ const Navbar = () => {
               Logout
             </button>
           </div>
-        ) }
+        )}
       </nav>
-
-      {/* Mobile Search */}
-      <div className="md:hidden px-4 py-2 bg-[#1f1f1f]">
-        <div className="relative">
-          {/* <FaSearch className="absolute left-3 top-3 text-gray-300" /> */}
-          <input
-            type="text"
-            // value={inputSearch}
-            // onChange={(e) => setInputSearch(e.target.value)}
-            placeholder="Search products..."
-            className="bg-[#3a3a3a] text-sm px-10 py-2 rounded-md outline-none placeholder-gray-400 w-full text-white"
-          />
-
-          <button
-            className="flex  justify-center
-           bg-white/10 backdrop-blur-md
-            border border-white/20
-         text-white px-4 py-2 rounded-r-md
-         hover:bg-white/20
-         active:scale-95 transition absolute top-0 right-0 cursor-pointer"
-          >
-            <SearchIcon size={18} />
-          </button>
-        </div>
-      </div>
 
       {/* Mobile Menu (Toggle) */}
       {open && (

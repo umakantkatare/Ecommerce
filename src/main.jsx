@@ -13,8 +13,13 @@ import SignUp from "./pages/SignUp.jsx";
 import AuthContextWrapper from "./context/AuthContext.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+<<<<<<< Updated upstream
 import SearchResult from "./components/searchResult.jsx";
 import CategoryProduct from './pages/CategoryProduct';
+=======
+import SearchResult from "./components/SearchResult.jsx";
+import CategoryProduct from "./pages/CategoryProduct";
+>>>>>>> Stashed changes
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,10 +54,9 @@ const router = createBrowserRouter([
         element: <SearchResult />,
       },
       {
-        path:"/products/category/:slug",
-        element:<CategoryProduct />
+        path: "/products/category/:slug",
+        element: <CategoryProduct />,
       },
-      
     ],
   },
 ]);
@@ -66,5 +70,5 @@ createRoot(document.getElementById("root")).render(
         </CartProduct>
       </AuthContextWrapper>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );

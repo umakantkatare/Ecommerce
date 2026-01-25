@@ -4,7 +4,7 @@ const searchSlice = createSlice({
   name: "search",
   initialState: {
     query: "",
-    suggestion: [],
+    suggestions: [],
     results: [],
     loading: false,
     error: null,
@@ -17,8 +17,8 @@ const searchSlice = createSlice({
       state.results = action.payload;
       state.loading = false;
     },
-    setSuggestion(state, action) {
-      state.suggestion = action.payload;
+    setSuggestions(state, action) {
+      state.suggestions = action.payload;
     },
     setLoading(state) {
       state.loading = true;
@@ -31,19 +31,21 @@ const searchSlice = createSlice({
     clearResults(state) {
       state.results = [];
     },
-    clearSuggestion(state) {
-      state.suggestion = [];
+    clearSuggestions(state) {
+      state.suggestions = [];
     },
+   
   },
 });
 
 export const {
   setQuery,
   setResults,
-  setSuggestion,
+  setSuggestions,
   setLoading,
   setError,
   clearResults,
-  clearSuggestion,
+  clearSuggestions,
+
 } = searchSlice.actions;
 export default searchSlice.reducer;

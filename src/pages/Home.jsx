@@ -16,7 +16,6 @@ import Features from "../components/Features";
 import NewArrival from "../components/NewArrival";
 import TopProducts from "../components/TopProducts";
 import NewsLetter from "../components/NewsLetter";
-import SearchSuggestions from "../components/SearchSuggestion";
 
 const Home = () => {
   return (
@@ -39,9 +38,12 @@ const Home = () => {
       <div>
         <NewsLetter/>
       </div>
+<<<<<<< Updated upstream
       <div>
         <SearchSuggestions/>
       </div>
+=======
+>>>>>>> Stashed changes
     </div>
   );
 };

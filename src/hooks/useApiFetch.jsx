@@ -8,7 +8,7 @@ export const useApiFetch = () => {
     setIsLoading(true);
     try {
       return (await axios.get(url, { params:{
-        params,
+        ...params,
         limit
       } })).data;
     } catch (error) {

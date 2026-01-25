@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
-import { fetchSearchProduct } from "../api/searchApi";
 import { useDispatch } from "react-redux";
 import { setQuery } from "../redux/features/searchSlice";
 import { useNavigate } from "react-router-dom";
 import { useApiFetch } from "../hooks/useApiFetch";
 import { baseUrl } from "../util/constant";
 
-const SearchSuggestions = ({ value }) => {
+const SearchSuggestions = ({
+  value,
+  setInputSearch,
+  setShowSuggestion,
+  setIsManualTyping,
+}) => {
   const navigate = useNavigate();
   const [suggestions, setSuggestions] = useState([]);
   const dispatch = useDispatch();
-  const {get} = useApiFetch()
+  const { get } = useApiFetch();
 
   useEffect(() => {
     if (!value?.trim()) {
@@ -18,33 +22,44 @@ const SearchSuggestions = ({ value }) => {
       return;
     }
 
+    const controller = new AbortController();
+
     const getSuggestions = async () => {
       try {
-        const res = await get(`${baseUrl}/products/search`,{}, 5);
-        setSuggestions(res.products)
+        const res = await get(`${baseUrl}/products/search`, { q: value }, 5, {
+          signal: controller.signal,
+        });
+        setSuggestions(res.products || []);
       } catch (err) {
-        console.error(err);
-        throw err
+        if (err.name !== "AbortError") console.error(err);
       }
     };
 
     const debounce = setTimeout(getSuggestions, 300);
-    return () => clearTimeout(debounce);
+    return () => {
+      clearTimeout(debounce);
+      controller.abort(); // Purani request cancel
+    };
   }, [value]);
 
   const suggestionHandle = (item) => {
-    navigate("/search");
-    dispatch(setQuery(item.title));
+    const title = item.title.trim();
+    setIsManualTyping(false); // Suggestions band karne ke liye flag
+    setInputSearch(title);
+    setShowSuggestion(false);
+    dispatch(setQuery(title));
+    navigate(`/search?q=${encodeURIComponent(title)}`);
   };
 
+  if (suggestions.length === 0) return null;
+
   return (
-    <div className="absolute top-full left-0 w-full bg-gray-800 rounded-md shadow-lg z-50">
+    <div className="absolute top-full left-0 w-full bg-gray-800 rounded-md shadow-lg z-1000">
       {suggestions.map((item) => (
         <div
           key={item.id}
-          onClick={() => suggestionHandle(item)}
           onMouseDown={() => suggestionHandle(item)}
-          className="px-4 py-2 text-sm text-white cursor-pointer hover:bg-gray-700"
+          className="px-4 py-3 hover:bg-gray-700 cursor-pointer text-white text-sm"
         >
           🔍 {item.title}
         </div>

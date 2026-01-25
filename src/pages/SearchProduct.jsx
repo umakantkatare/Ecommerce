@@ -8,7 +8,7 @@ const SearchProduct = ({ product }) => {
   return (
     <div
       onClick={() => navigate(`/productDetails/${product.id}`)}
-      className="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer"
+      className="max-w-sm bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition cursor-pointer min-h-[56vh]"
     >
       {/* Image */}
       <img

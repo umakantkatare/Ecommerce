@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { fetchCategoryProduct } from "../api/categoryApi";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useApiFetch } from "../hooks/useApiFetch";
 import { baseUrl } from "../util/constant";
 
 const CategoryResult = () => {
-  // const { slug } = useParams();
   const [categories, setcategories] = useState([]);
 
-  const categoriesList = Array.isArray(categories) &&  categories?.slice(0, 8);
+  const categoriesList = Array.isArray(categories) && categories?.slice(0, 8);
 
   const { get } = useApiFetch();
 
@@ -21,24 +19,37 @@ const CategoryResult = () => {
     };
     getCategoriesData();
   }, []);
-
   return (
     <div className="bg-gray-700 border-t border-gray-700">
-      <div className="max-w-[95vw] mx-auto px-4 sm:px-6 lg:px-8">
-        <Link className="flex items-center justify-center gap-2 py-3 px-5 overflow-x-hidden">
-          {Array.isArray(categories) &&
-            categoriesList.map((result) => {
-              return (
-                <div
-                  key={result.slug}
-                  className="px-6 py-2 text-white rounded-full transition whitespace-nowrap font-medium capitalize"
-                  onClick={() => navigate(`/products/category/${result.slug}`)}
-                >
-                  {result.slug}
-                </div>
-              );
-            })}
-        </Link>
+      <div className="min-w-[86vw] mx-auto px-3 sm:px-6 lg:px-8">
+        <div
+          className="
+          flex gap-3 py-3
+          overflow-x-auto
+          scrollbar-hide
+          sm:justify-center
+        "
+        >
+          {Array.isArray(categoriesList) &&
+            categoriesList.map((result) => (
+              <button
+                key={result.slug}
+                onClick={() => navigate(`/products/category/${result.slug}`)}
+                className="
+                px-4 sm:px-6 py-2
+                text-white bg-gray-600
+                rounded-full
+                whitespace-nowrap
+                font-medium capitalize
+                transition
+                hover:bg-gray-500
+                shrink-0
+              "
+              >
+                {result.slug}
+              </button>
+            ))}
+        </div>
       </div>
     </div>
   );

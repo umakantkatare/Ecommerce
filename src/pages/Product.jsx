@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ProductCard from "../components/ProductCard";
+import { useApiFetch } from "../hooks/useApiFetch";
+import { baseUrl } from "../util/constant";
+
 const Product = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const url = `https://dummyjson.com/products/category/smartphones`;
+  const { get } = useApiFetch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(url);
-        setData(response.data.products);
+        const response = await get(`${baseUrl}/products`);
+        setData(response.products);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -22,7 +24,6 @@ const Product = () => {
     };
     fetchData();
   }, []);
-
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -39,7 +40,7 @@ const Product = () => {
     );
   }
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 sm:justify-center md:justify-center xl:grid-cols-4 2xl:grid-cols-5 gap-5 my-2 p-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5 my-2 p-2">
       {data.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

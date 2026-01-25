@@ -5,7 +5,7 @@ import { Eye, EyeOff, Mail, Phone, Lock, Chrome, User } from "lucide-react";
 import useAuth from "../hooks/useAuth";
 
 const SignUp = () => {
-  const {newUser} = useAuth()
+  const { newUser } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -29,16 +29,12 @@ const SignUp = () => {
   }, [isSubmitSuccessful, reset]);
 
   const onSubmit = (data) => {
-    // console.log(data);
-    newUser(data)
+    newUser(data);
     navigate("/");
   };
 
   return (
-    <div
-      className="min-h-screen bg-gray-800 flex items-center justify-center px-4 text-black "
-      // className="w-[80vw] h-[60vh] bg-gray-800 flex justify-center items-center mx-auto my-7 text-black"
-    >
+    <div className="min-h-screen bg-gray-800 flex items-center justify-center px-4 text-black ">
       {/* card */}
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -52,7 +48,6 @@ const SignUp = () => {
         p-6 sm:p-8
         flex flex-col gap-5
       "
-        //  className="w-[35%] h-[90%] bg-white rounded-lg flex flex-col gap-5 mx-auto p-6 "
       >
         {/* Header */}
         <div className="flex flex-col items-center my-2">
