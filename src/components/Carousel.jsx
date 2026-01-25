@@ -53,7 +53,7 @@ const Carousel = () => {
       onMouseLeave={startAutoSlide}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full h-[35vh] sm:h-[40vh] md:h-[50vh] overflow-hidden"
+      className="relative w-full h-[30vh] sm:h-[40vh] md:h-[50vh] overflow-hidden"
     >
       {/* IMAGES */}
       <div

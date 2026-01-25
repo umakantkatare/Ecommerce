@@ -13,7 +13,7 @@ import SignUp from "./pages/SignUp.jsx";
 import AuthContextWrapper from "./context/AuthContext.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import SearchResult from "./components/searchResult.jsx";
+import SearchResult from "./components/SearchResult.jsx";
 import CategoryProduct from './pages/CategoryProduct';
 const router = createBrowserRouter([
   {
