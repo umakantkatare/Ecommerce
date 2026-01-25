@@ -28,28 +28,11 @@ const ProductDetails = () => {
 
     fetchData();
   }, [productId]);
-<<<<<<< Updated upstream
-  useEffect(() => {
-  }, [productDetails]);
-=======
->>>>>>> Stashed changes
 
   if (error) return <p className="text-center mt-10">{error}</p>;
   if (!productDetails) return <p className="text-center mt-10">Loading...</p>;
 
   return (
-<<<<<<< Updated upstream
-    <>
-      <div className="flex justify-center m-4">
-        <div className="max-w-sm lg:min-w-[60vw] lg:flex lg:justify-center bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border p-3">
-          {/* Image */}
-          <div className="w-1/3">
-            <img
-              src={productDetails.images[2]}
-              alt={productDetails.title}
-              className="w-full lg:w-[20vw] h-full object-cover rounded-t-xl"
-            />
-=======
     <div className="px-4 py-6 flex justify-center">
       <div className="w-full max-w-5xl bg-white rounded-xl shadow-md border overflow-hidden flex flex-col md:flex-row">
         {/* IMAGE CAROUSEL */}
@@ -88,7 +71,6 @@ const ProductDetails = () => {
             <p className="text-xs md:text-sm text-red-500">
               {productDetails.discountPercentage}% OFF
             </p>
->>>>>>> Stashed changes
           </div>
 
           {/* Stock */}

@@ -15,7 +15,6 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import SearchResult from "./components/searchResult.jsx";
 import CategoryProduct from './pages/CategoryProduct';
-import CategoryProduct from "./pages/CategoryProduct";
 const router = createBrowserRouter([
   {
     path: "/",

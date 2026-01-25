@@ -26,12 +26,6 @@ const Home = () => {
       <div>
         <NewsLetter />
       </div>
-<<<<<<< Updated upstream
-      <div>
-        <SearchSuggestions />
-      </div>
-=======
->>>>>>> Stashed changes
     </div>
   );
 };
