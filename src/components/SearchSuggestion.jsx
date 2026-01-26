@@ -38,13 +38,13 @@ const SearchSuggestions = ({
     const debounce = setTimeout(getSuggestions, 300);
     return () => {
       clearTimeout(debounce);
-      controller.abort(); // Purani request cancel
+      controller.abort(); 
     };
   }, [value]);
 
   const suggestionHandle = (item) => {
     const title = item.title.trim();
-    setIsManualTyping(false); // Suggestions band karne ke liye flag
+    setIsManualTyping(false); 
     setInputSearch(title);
     setShowSuggestion(false);
     dispatch(setQuery(title));

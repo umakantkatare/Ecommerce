@@ -1,6 +1,13 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaG } from "react-icons/fa6";
+import { SiIndeed } from "react-icons/si";
+import { Link, useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate = useNavigate();
+  const handleLinkedInClick = () => {
+    navigate("https://www.linkedin.com/in/umakant-katare/", { replace: true });
+  };
   return (
     <footer className="bg-[#1f1f1f] text-gray-300 px-4 py-10 mt-10 w-full ">
       {/* Grid layout */}
@@ -15,13 +22,38 @@ function Footer() {
 
           {/* Social icons */}
           <div className="flex justify-center sm:justify-start gap-4 mt-4">
-            <FaFacebook className="cursor-pointer hover:text-white" size={20} />
-            <FaInstagram
-              className="cursor-pointer hover:text-white"
-              size={20}
-            />
-            <FaTwitter className="cursor-pointer hover:text-white" size={20} />
-            <FaLinkedin className="cursor-pointer hover:text-white" size={20} />
+            <a
+              href="https://www.linkedin.com/in/umakant-katare/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              <FaLinkedin size={20} />
+            </a>{" "}
+            <a
+              href="https://profile.indeed.com/?hl=en_IN&co=IN&from=gnav-homepage"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              <SiIndeed size={20} />
+            </a>{" "}
+            <a
+              href="https://github.com/umakantkatare?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              <FaGithub size={20} />
+            </a>{" "}
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              <FaInstagram size={20} />
+            </a>{" "}
           </div>
         </div>
 
@@ -29,10 +61,18 @@ function Footer() {
         <div>
           <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li className="hover:text-white cursor-pointer">Home</li>
-            <li className="hover:text-white cursor-pointer">Shop</li>
-            <li className="hover:text-white cursor-pointer">About Us</li>
-            <li className="hover:text-white cursor-pointer">Contact</li>
+            <Link to="/">
+              <li className="hover:text-white cursor-pointer">Home</li>
+            </Link>
+            <Link to="/products">
+              <li className="hover:text-white cursor-pointer">Product</li>
+            </Link>
+            <Link to="/">
+              <li className="hover:text-white cursor-pointer">About Us</li>
+            </Link>
+            <Link to="/">
+              <li className="hover:text-white cursor-pointer">Contact</li>
+            </Link>
           </ul>
         </div>
 
@@ -55,7 +95,7 @@ function Footer() {
           <ul className="space-y-2 text-sm">
             <li>Email: support@ecommerce.com</li>
             <li>Phone: +91 98765 43210</li>
-            <li>Location: Indore, India</li>
+            <li>Location: Gurugram, India</li>
           </ul>
         </div>
       </div>

@@ -26,7 +26,7 @@ const featuredProducts = [
   },
   {
     id: 3,
-    name: "Laptop Stand",
+    name: "Laptop",
     price: 49.99,
     rating: 4.3,
     image:
@@ -46,7 +46,7 @@ const featuredProducts = [
   },
   {
     id: 5,
-    name: "Womens-shoes",
+    name: "Women-shoes",
     price: 79.99,
     rating: 4.4,
     image:
@@ -56,7 +56,7 @@ const featuredProducts = [
   },
   {
     id: 6,
-    name: "Mens-Shoes",
+    name: "Men-Shoes",
     price: 89.99,
     rating: 4.7,
     image:

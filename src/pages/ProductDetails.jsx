@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import useCart from "../hooks/useCart";
 import ProductImageCarousel from "../components/ProductImageCarousel";
 import Rating from "../components/Rating";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const ProductDetails = () => {
   const { addToCart } = useCart();
@@ -30,10 +32,10 @@ const ProductDetails = () => {
   }, [productId]);
 
   if (error) return <p className="text-center mt-10">{error}</p>;
-  if (!productDetails) return <p className="text-center mt-10">Loading...</p>;
+  if (!productDetails) return <p className="text-center mt-10"><Skeleton height={300} /></p>;
 
   return (
-    <div className="px-4 py-6 flex justify-center">
+    <div className="px-4 py-6 flex justify-center items-center">
       <div className="w-full max-w-5xl bg-white rounded-xl shadow-md border overflow-hidden flex flex-col md:flex-row">
         {/* IMAGE CAROUSEL */}
         <ProductImageCarousel productDetails={productDetails} />

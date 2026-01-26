@@ -40,7 +40,7 @@ const Search = () => {
   useEffect(() => {
     if (location.pathname === "/") {
       setInputSearch("");
-      setIsManualTyping(false); 
+      setIsManualTyping(false);
       setShowSuggestion(false);
     }
   }, [location.pathname]);
@@ -50,6 +50,11 @@ const Search = () => {
     const term = inputSearch.trim();
     if (!term) return;
 
+    if (searchRef.current) {
+      searchRef.current.blur();
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     setIsManualTyping(false);
     setShowSuggestion(false);
     navigate(`/search?q=${encodeURIComponent(term)}`);
@@ -57,9 +62,10 @@ const Search = () => {
   };
 
   return (
-    <div ref={searchRef} className="relative flex w-full flex-col sm:w-[35vw]">
+    <div className="relative flex w-full flex-col sm:w-[35vw]">
       <form className="relative flex items-center" onSubmit={searchHandle}>
         <input
+          ref={searchRef}
           type="text"
           value={inputSearch}
           onChange={(e) => {

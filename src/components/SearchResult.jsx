@@ -44,7 +44,6 @@ const SearchResult = () => {
 
   return (
     <section className="px-4 sm:px-6 lg:px-8 my-6">
-      {/* UI hamesha searchQueryURL use karega */}
       {searchQueryURL && (
         <h2 className="text-lg font-bold text-white mb-5 border-l-4 border-red-500 pl-3">
           Results for: <span className="text-red-400">{searchQueryURL}</span>
